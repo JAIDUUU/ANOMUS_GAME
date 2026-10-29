@@ -40,7 +40,7 @@
     --COLOR_PANEL_TEXT: #f5f3ff;
     --COLOR_TOOL_TIP_BG: #7c3aed;
 
-    --COLOR_CHAT_TEXT_BASE: #f1f5f9;
+    --COLOR_CHAT_TEXT_BASE: #f8fafc;
     --COLOR_CHAT_TEXT_GUESSED: #4ade80;
     --COLOR_CHAT_TEXT_CLOSE: #facc15;
     --COLOR_CHAT_TEXT_DRAWING: #38bdf8;
@@ -48,6 +48,19 @@
     --COLOR_CHAT_TEXT_LEAVE: #f87171;
     --COLOR_CHAT_TEXT_OWNER: #c084fc;
     --COLOR_CHAT_TEXT_GUESSCHAT: #4ade80;
+    --COLOR_CHAT_BG_BASE: #0f0722;
+    --COLOR_CHAT_BG_ALT: #170b32;
+    --COLOR_CHAT_BG_GUESSED_BASE: rgba(16, 185, 129, 0.22);
+    --COLOR_CHAT_BG_GUESSED_ALT: rgba(16, 185, 129, 0.32);
+    --COLOR_CHAT_INPUT_COUNT: #a78bfa;
+
+    --COLOR_PLAYER_BG_BASE: #140b2a;
+    --COLOR_PLAYER_BG_ALT: #1c0f38;
+    --COLOR_PLAYER_BG_GUESSED_BASE: rgba(16, 185, 129, 0.28);
+    --COLOR_PLAYER_BG_GUESSED_ALT: rgba(16, 185, 129, 0.38);
+    --COLOR_PLAYER_TEXT_BASE: #f8fafc;
+    --COLOR_PLAYER_ME: #38bdf8;
+    --COLOR_PLAYER_ME_GUESSED: #4ade80;
 }
 
 body {
@@ -141,9 +154,100 @@ body {
 #game-chat {
     background: #140b2a !important;
     border-left: 2px solid #3b1f68 !important;
+    border-radius: 4px !important;
 }
+
 #game-chat .chat-content {
     background: #0f0722 !important;
+    color: #f8fafc !important;
+}
+
+#game-chat .chat-content p {
+    padding: 3px 8px !important;
+    margin: 0 !important;
+    font-size: 0.95em !important;
+}
+
+#game-chat .chat-content p:nth-child(odd) {
+    background-color: transparent !important;
+}
+
+#game-chat .chat-content p:nth-child(even) {
+    background-color: #170b32 !important;
+}
+
+#game-chat .chat-content p.guessed {
+    background-color: rgba(16, 185, 129, 0.22) !important;
+    color: #4ade80 !important;
+}
+
+#game-chat .chat-content p.guessed:nth-child(even) {
+    background-color: rgba(16, 185, 129, 0.32) !important;
+}
+
+#game-chat form.chat-form {
+    background: #140b2a !important;
+    border-top: 1px solid #3b1f68 !important;
+}
+
+#game-chat form.chat-form input,
+#game-chat-input-mobile input {
+    background: #0f0722 !important;
+    border: 1.5px solid #4c2889 !important;
+    color: #ffffff !important;
+    border-radius: 4px !important;
+}
+
+#game-chat form.chat-form input:focus,
+#game-chat-input-mobile input:focus {
+    border-color: #c084fc !important;
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.4) !important;
+    outline: none !important;
+}
+
+/* Players list high-contrast styling */
+#game-players {
+    background: #140b2a !important;
+    border-right: 2px solid #3b1f68 !important;
+    border-radius: 4px !important;
+}
+
+#game-players .player-background {
+    background: #140b2a !important;
+}
+
+#game-players .player.odd .player-background {
+    background: #180d34 !important;
+}
+
+#game-players .player.guessed .player-background {
+    background: rgba(16, 185, 129, 0.25) !important;
+}
+
+#game-players .player.guessed.odd .player-background {
+    background: rgba(16, 185, 129, 0.35) !important;
+}
+
+#game-players .player {
+    color: #f8fafc !important;
+}
+
+#game-players .player .player-name {
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+}
+
+#game-players .player .player-name.me {
+    color: #38bdf8 !important;
+    font-weight: 800 !important;
+}
+
+#game-players .player .player-score {
+    color: #c084fc !important;
+}
+
+#game-players .player .player-rank {
+    color: #06b6d4 !important;
 }
 
 #game-toolbar {
