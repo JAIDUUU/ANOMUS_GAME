@@ -193,6 +193,46 @@ const BOT_DRAWINGS = {
 
 const BOT_NAMES = ['DoodleBot', 'PixelPanda', 'SketchMaster', 'Artie', 'Chalky', 'PicassoAI', 'ColorCraze'];
 
+// Curated English names (85-90% popular English girl names for default random player assignment)
+const GIRL_NAMES = [
+    'Emma', 'Olivia', 'Sophia', 'Ava', 'Mia', 'Isabella', 'Amelia', 'Harper', 'Evelyn', 'Abigail',
+    'Emily', 'Ella', 'Chloe', 'Grace', 'Lily', 'Zoe', 'Hannah', 'Victoria', 'Stella', 'Maya',
+    'Scarlett', 'Daisy', 'Ruby', 'Lucy', 'Alice', 'Rose', 'Clara', 'Elena', 'Bella', 'Sophie',
+    'Hazel', 'Amber', 'Fiona', 'Ivy', 'Jade', 'Luna', 'Penny', 'Holly', 'Millie', 'Summer',
+    'Layla', 'Poppy', 'Sienna', 'Freya', 'Zara', 'Phoebe', 'Skye', 'Gemma', 'Rosie', 'Ellie',
+    'Brooke', 'Paige', 'Georgia', 'Leah', 'Amy', 'Molly', 'Katie', 'Sarah', 'Jessica', 'Laura',
+    'Megan', 'Rachel', 'Tessa', 'Kylie', 'Autumn', 'Heidi', 'Sadie', 'Chelsea', 'Carly', 'Kira',
+    'Serena', 'Eliza', 'Nancy', 'Nina', 'Talia', 'Wendy', 'Bonnie', 'Daphne', 'Joy', 'Pearl',
+    'Hope', 'Faith', 'Melody', 'Annie', 'Lexi', 'Macy', 'Rory', 'Jasmine', 'April', 'Crystal',
+    'Gwen', 'Kelly', 'Jenny', 'Brittany', 'Cassidy', 'Sydney', 'Naomi', 'Violet', 'Samantha', 'Vanessa',
+    'Penelope', 'Madeline', 'Audrey', 'Eleanor', 'Claire', 'Piper', 'Norah', 'Vivian', 'Allison'
+];
+
+const OTHER_NAMES = [
+    'Alex', 'Sam', 'Charlie', 'Taylor', 'Jordan', 'Morgan', 'Robin', 'Riley', 'Casey', 'Sunny',
+    'Sky', 'Jamie', 'Avery', 'Dakota', 'Skyler', 'Finley', 'Rowan', 'Harper', 'Eden'
+];
+
+function generatePlayerName(existingUsers = []) {
+    const existing = new Set((existingUsers || []).map(u => (u.name || '').toLowerCase()));
+    const useGirlName = Math.random() < 0.88; // ~88% English girl names
+    const pool = useGirlName ? GIRL_NAMES : OTHER_NAMES;
+
+    for (let i = 0; i < 30; i++) {
+        const candidate = pool[Math.floor(Math.random() * pool.length)];
+        if (!existing.has(candidate.toLowerCase())) {
+            return candidate;
+        }
+    }
+
+    const fallback = pool[Math.floor(Math.random() * pool.length)];
+    let count = 2;
+    while (existing.has(`${fallback} ${count}`.toLowerCase())) {
+        count++;
+    }
+    return `${fallback} ${count}`;
+}
+
 class Room {
     constructor(id, isPrivate) {
         this.id = id;
@@ -224,10 +264,12 @@ class Room {
 
     addUser(socket, name, avatar, ip) {
         const userId = this.nextUserId++;
+        const trimmed = (typeof name === 'string') ? name.trim() : '';
+        const finalName = trimmed || generatePlayerName(this.users);
         const user = {
             id: userId,
             flags: 0,
-            name: name || `Player ${userId}`,
+            name: finalName,
             avatar: avatar || [Math.floor(Math.random() * 28), Math.floor(Math.random() * 57), Math.floor(Math.random() * 51), -1],
             score: 0,
             guessed: false,
