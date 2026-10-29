@@ -15,15 +15,39 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3000;
 
 // Load dictionary and prepare multi-language word packs (English primary, structured for Hindi/Hinglish packs)
+let wordsData = { easy: [], medium: [], normal: [], all: [] };
 let wordsList = [];
 try {
-    wordsList = JSON.parse(fs.readFileSync(path.join(__dirname, 'words.json'), 'utf-8'));
+    const raw = JSON.parse(fs.readFileSync(path.join(__dirname, 'words.json'), 'utf-8'));
+    if (Array.isArray(raw)) {
+        wordsList = raw;
+        wordsData.all = raw;
+        wordsData.easy = raw.filter(w => w.length <= 4);
+        wordsData.medium = raw.filter(w => w.length > 4 && w.length <= 7);
+        wordsData.normal = raw.filter(w => w.length > 7);
+    } else if (raw && typeof raw === 'object') {
+        wordsData = {
+            easy: raw.easy || [],
+            medium: raw.medium || [],
+            normal: raw.normal || [],
+            all: raw.all || [
+                ...(raw.easy || []),
+                ...(raw.medium || []),
+                ...(raw.normal || [])
+            ]
+        };
+        wordsList = wordsData.all;
+    }
 } catch (e) {
     wordsList = ['apple', 'banana', 'cat', 'dog', 'elephant', 'guitar', 'house', 'pizza', 'robot', 'sun', 'tree', 'car'];
+    wordsData.all = wordsList;
+    wordsData.easy = ['cat', 'dog', 'sun', 'car'];
+    wordsData.medium = ['apple', 'pizza', 'robot', 'tree'];
+    wordsData.normal = ['banana', 'elephant', 'guitar', 'house'];
 }
 
 const wordPacks = {
-    0: wordsList, // English default
+    0: wordsData, // English default (structured easy, medium, normal)
     hi: [],       // Reserved for Hindi pack expansion
     hinglish: []  // Reserved for Hinglish pack expansion
 };
@@ -479,20 +503,56 @@ class Room {
             u.hasCloseGuessed = false;
         }
 
-        // Pick random words respecting WORDCOUNT setting (1-5, default 3)
+        // Pick balanced words respecting WORDCOUNT setting (1-5, default 3)
         const wordCountSetting = parseInt(this.settings[SETTINGS.WORDCOUNT]) || 3;
         const targetCount = Math.max(1, Math.min(5, wordCountSetting));
         const langSetting = this.settings[SETTINGS.LANG] || 0;
-        const activeWordList = wordPacks[langSetting] || wordsList;
+        const pack = wordPacks[langSetting] || wordsData;
+        const fullPool = Array.isArray(pack) ? pack : (pack.all || wordsList);
 
         const choices = [];
-        const pool = (this.settings[SETTINGS.CUSTOMWORDSONLY] && this.customWords.length >= targetCount)
-            ? this.customWords
-            : (this.customWords.length > 0 && Math.random() < 0.5 ? this.customWords : activeWordList);
+        if (this.settings[SETTINGS.CUSTOMWORDSONLY] && this.customWords.length >= targetCount) {
+            // Exclusive custom words
+            while (choices.length < targetCount && choices.length < this.customWords.length) {
+                const rand = this.customWords[Math.floor(Math.random() * this.customWords.length)];
+                if (!choices.includes(rand)) choices.push(rand);
+            }
+        } else if (pack && pack.easy && pack.medium && pack.normal && pack.easy.length > 0) {
+            // Balanced difficulty: Tier 1 (Easy), Tier 2 (Medium), Tier 3 (Normal/Fun)
+            const tiers = [pack.easy, pack.medium, pack.normal];
 
-        while (choices.length < targetCount && choices.length < pool.length) {
-            const rand = pool[Math.floor(Math.random() * pool.length)];
-            if (!choices.includes(rand)) choices.push(rand);
+            // If custom words exist and not exclusive, occasionally slot one
+            if (this.customWords.length > 0 && Math.random() < 0.4) {
+                const randCustom = this.customWords[Math.floor(Math.random() * this.customWords.length)];
+                if (!choices.includes(randCustom)) choices.push(randCustom);
+            }
+
+            for (let i = 0; choices.length < targetCount && i < tiers.length; i++) {
+                const tierList = tiers[i];
+                if (tierList && tierList.length > 0) {
+                    let attempts = 0;
+                    while (attempts < 25) {
+                        const word = tierList[Math.floor(Math.random() * tierList.length)];
+                        if (!choices.includes(word)) {
+                            choices.push(word);
+                            break;
+                        }
+                        attempts++;
+                    }
+                }
+            }
+
+            // Fill any remaining slots (for word count 4 or 5)
+            while (choices.length < targetCount && choices.length < fullPool.length) {
+                const rand = fullPool[Math.floor(Math.random() * fullPool.length)];
+                if (!choices.includes(rand)) choices.push(rand);
+            }
+        } else {
+            // Flat pool fallback
+            while (choices.length < targetCount && choices.length < fullPool.length) {
+                const rand = fullPool[Math.floor(Math.random() * fullPool.length)];
+                if (!choices.includes(rand)) choices.push(rand);
+            }
         }
         this.wordChoices = choices;
 
