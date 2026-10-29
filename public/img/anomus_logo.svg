@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="anomus-violet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <linearGradient id="neon-cyan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <linearGradient id="mascot-body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="40%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+
+    <linearGradient id="gold-star" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Filters for Neon Glow -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(10, 0)">
+    <!-- MASCOT "NOMU" - Left Side (x: 40, y: 30) -->
+    <g transform="translate(45, 25)" filter="url(#subtle-shadow)">
+      <!-- Splashes & Particles behind mascot -->
+      <circle cx="140" cy="40" r="7" fill="#38bdf8" opacity="0.8"/>
+      <circle cx="20" cy="110" r="5" fill="#f472b6" opacity="0.8"/>
+      <circle cx="150" cy="140" r="8" fill="#fbbf24" opacity="0.9"/>
+      
+      <!-- Paint splat trail -->
+      <path d="M 120 70 C 145 50, 160 80, 150 95 C 140 110, 125 100, 120 70 Z" fill="#22d3ee" opacity="0.75" />
+
+      <!-- Mascot Body: Cute rounded pebble/blob shape -->
+      <ellipse cx="80" cy="110" rx="60" ry="58" fill="url(#mascot-body)"/>
+      <ellipse cx="80" cy="110" rx="57" ry="55" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6"/>
+
+      <!-- Artist Beret Hat -->
+      <g transform="translate(45, 30) rotate(-14)">
+        <ellipse cx="40" cy="25" rx="46" ry="19" fill="#1e1b4b" stroke="#7c3aed" stroke-width="4"/>
+        <ellipse cx="40" cy="22" rx="36" ry="12" fill="#4338ca"/>
+        <!-- Beret Stem -->
+        <path d="M 40 10 L 40 4" stroke="#c084fc" stroke-width="4" stroke-linecap="round"/>
+      </g>
+
+      <!-- Cute Big Sparkling Eyes -->
+      <!-- Left Eye -->
+      <ellipse cx="58" cy="105" rx="11" ry="15" fill="#0f172a"/>
+      <ellipse cx="56" cy="100" rx="5" ry="7" fill="#ffffff"/>
+      <circle cx="62" cy="112" r="2.5" fill="#ffffff"/>
+
+      <!-- Right Eye -->
+      <ellipse cx="102" cy="105" rx="11" ry="15" fill="#0f172a"/>
+      <ellipse cx="100" cy="100" rx="5" ry="7" fill="#ffffff"/>
+      <circle cx="106" cy="112" r="2.5" fill="#ffffff"/>
+
+      <!-- Blushing Cheeks -->
+      <ellipse cx="42" cy="118" rx="8" ry="5" fill="#f43f5e" opacity="0.6"/>
+      <ellipse cx="118" cy="118" rx="8" ry="5" fill="#f43f5e" opacity="0.6"/>
+
+      <!-- Joyful Open Smile -->
+      <path d="M 70 118 Q 80 134 90 118 Z" fill="#ef4444" stroke="#0f172a" stroke-width="2.5"/>
+      <path d="M 74 121 Q 80 126 86 121" fill="#fca5a5"/>
+
+      <!-- Little Artist Paintbrush in Hand -->
+      <g transform="translate(115, 110) rotate(32)">
+        <!-- Brush Handle -->
+        <rect x="0" y="0" width="10" height="52" rx="3" fill="#d97706" stroke="#451a03" stroke-width="2"/>
+        <!-- Metal Ferrule -->
+        <rect x="0" y="48" width="10" height="12" rx="1" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+        <!-- Brush Bristles -->
+        <path d="M 0 60 C 0 78, 10 78, 10 60 Z" fill="#22d3ee"/>
+        <!-- Glow drop on brush tip -->
+        <circle cx="5" cy="74" r="5" fill="#38bdf8" filter="url(#neon-glow)"/>
+      </g>
+    </g>
+
+    <!-- TYPOGRAPHY: "ANOMUS" (Starts at x: 235) -->
+    <g transform="translate(235, 138)" filter="url(#subtle-shadow)">
+      <!-- 3D Depth Shadow under letters -->
+      <text x="0" y="8" font-family="'Nunito', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="112" fill="#1e1038" letter-spacing="4">ANOMUS</text>
+      <text x="0" y="4" font-family="'Nunito', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="112" fill="#4c1d95" letter-spacing="4">ANOMUS</text>
+      
+      <!-- Main Glowing Neon Letters -->
+      <text x="0" y="0" font-family="'Nunito', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="112" fill="url(#anomus-violet-grad)" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" letter-spacing="4">ANOMUS</text>
+      
+      <!-- Pencil / Stylus integrated into the 'O' accent -->
+      <circle cx="282" cy="-35" r="14" fill="none" stroke="#22d3ee" stroke-width="5" filter="url(#neon-glow)"/>
+      <circle cx="282" cy="-35" r="5" fill="#f472b6"/>
+      
+      <!-- Playful Star on Top Right of 'S' -->
+      <g transform="translate(490, -78) scale(1.1)">
+        <polygon points="12,0 16,9 25,10 18,17 20,26 12,21 4,26 6,17 -1,10 8,9" fill="url(#gold-star)" stroke="#b45309" stroke-width="1.5" filter="url(#neon-glow)"/>
+      </g>
+    </g>
+
+    <!-- SUBTITLE / TAGLINE -->
+    <g transform="translate(242, 178)">
+      <rect x="-6" y="-18" width="470" height="28" rx="14" fill="#1e1038" opacity="0.75" stroke="#7c3aed" stroke-width="1.5"/>
+      <text x="12" y="1" font-family="'Nunito', 'Inconsolata', monospace" font-size="15" font-weight="800" fill="#22d3ee" letter-spacing="8">DRAW  •  GUESS  •  WIN</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Anomus</title>
+    <meta name="description" content="Anomus Terms of Service - Online multiplayer drawing and guessing game created by Zaid.">
+    <link rel="icon" type="image/svg+xml" href="/img/anomus_favicon.svg">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Inconsolata:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0b0716;
+            --bg-card: rgba(24, 15, 48, 0.94);
+            --bg-card-alt: rgba(36, 21, 72, 0.7);
+            --border-card: #4c2889;
+            --border-glow: #8b5cf6;
+            --primary-accent: #8b5cf6;
+            --secondary-accent: #06b6d4;
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --text-dim: #94a3b8;
+            --highlight: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-base);
+            background-image: 
+                radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15), transparent 70%),
+                radial-gradient(ellipse at bottom, rgba(6, 182, 212, 0.1), transparent 70%);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.65;
+            padding: 24px 16px 60px;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .logo-wrap {
+            margin-bottom: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .logo-wrap:hover {
+            transform: scale(1.03);
+        }
+
+        .logo-wrap img {
+            width: 240px;
+            max-width: 90vw;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Content Card */
+        .card {
+            background: var(--bg-card);
+            border: 1.5px solid var(--border-card);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 24px 18px;
+            }
+        }
+
+        .header-title-box {
+            border-bottom: 1.5px solid rgba(139, 92, 246, 0.3);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .badge-date {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.2);
+            color: #c084fc;
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Sections */
+        .section-item {
+            margin-bottom: 36px;
+        }
+
+        .section-item:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .sec-num {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 28px;
+            height: 28px;
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--secondary-accent);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Inconsolata', monospace;
+            font-weight: 700;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+
+        ul li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            top: -1px;
+            color: var(--primary-accent);
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        /* Highlight Notice Box */
+        .notice-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid var(--highlight);
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            margin: 20px 0;
+            color: #fef3c7;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+        }
+
+        .creator-box {
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 14px;
+        }
+
+        .creator-box p {
+            margin-bottom: 6px;
+        }
+
+        .creator-box strong {
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: #ffffff;
+        }
+
+        footer .links {
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        footer .links a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.15s ease;
+        }
+
+        footer .links a:hover {
+            color: #c084fc;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="logo-wrap" title="Return to Anomus">
+                <img src="/img/anomus_logo.svg" alt="Anomus Logo">
+            </a>
+            <div class="nav-bar">
+                <a href="/" class="back-btn">← Back to Game</a>
+            </div>
+        </header>
+
+        <main class="card">
+            <div class="header-title-box">
+                <h1>Terms of Service</h1>
+                <span class="badge-date">Last Updated: October 29, 2026</span>
+            </div>
+
+            <!-- Section 1 -->
+            <div class="section-item">
+                <h2><span class="sec-num">1</span> Acceptance of Terms</h2>
+                <p>By accessing or using <strong>Anomus</strong>, you agree to these Terms of Service and all applicable laws. If you do not agree, please do not use the website.</p>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section-item">
+                <h2><span class="sec-num">2</span> About Anomus</h2>
+                <p><strong>Anomus</strong> is an online multiplayer drawing and guessing game created by <strong>Zaid</strong>. Users can participate in game rooms, draw pictures, guess words, chat with other players, and use available game features.</p>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section-item">
+                <h2><span class="sec-num">3</span> Intellectual Property and Website Protection</h2>
+                <p>The original branding, logo, website design, original graphics, text, and other original materials created for Anomus are protected by applicable intellectual property laws.</p>
+                <p>You may not, without prior written permission:</p>
+                <ul>
+                    <li>Copy or reproduce the website's original design, branding, or original assets.</li>
+                    <li>Republish or redistribute website content as your own.</li>
+                    <li>Create an unauthorized copy or mirror of Anomus.</li>
+                    <li>Use Anomus branding, logos, or original assets in a way that suggests official affiliation.</li>
+                    <li>Redistribute or commercially exploit protected materials without authorization.</li>
+                </ul>
+                <div class="notice-box">
+                    ⚠️ <strong>Please respect the work behind Anomus. Do not copy, reproduce, or redistribute its original design, branding, or protected content without permission.</strong>
+                </div>
+                <p>This section does not claim ownership of third-party materials, open-source software, or general game ideas that are not exclusively protected by law.</p>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section-item">
+                <h2><span class="sec-num">4</span> Acceptable Use</h2>
+                <p>You agree not to:</p>
+                <ul>
+                    <li>Disrupt or interfere with the website or its servers.</li>
+                    <li>Exploit bugs or vulnerabilities to harm the service or other players.</li>
+                    <li>Use automated tools to spam, abuse, or overload the service.</li>
+                    <li>Harass, threaten, or abuse other players.</li>
+                    <li>Submit illegal, harmful, or infringing content.</li>
+                    <li>Attempt to access private rooms, accounts, or systems without authorization.</li>
+                </ul>
+                <p>We may restrict access to users who violate these terms, where appropriate and permitted by law.</p>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section-item">
+                <h2><span class="sec-num">5</span> User Content and Chat</h2>
+                <p>You are responsible for the messages, custom words, drawings, and other content you submit through Anomus.</p>
+                <p>Do not submit content that violates applicable laws or the rights of others. We may take reasonable steps to remove prohibited content or address reported abuse.</p>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section-item">
+                <h2><span class="sec-num">6</span> Privacy</h2>
+                <p>Your use of Anomus is also subject to our Privacy Policy. That policy should explain what information the website actually collects, how it is used, how long it is retained, and when it may be shared.</p>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section-item">
+                <h2><span class="sec-num">7</span> Availability and Disclaimer</h2>
+                <p>Anomus is provided on an "as is" and "as available" basis, to the extent permitted by applicable law.</p>
+                <p>We do not guarantee uninterrupted access, error-free operation, or that every feature will always be available. Nothing in these terms excludes rights or protections that cannot legally be excluded.</p>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section-item">
+                <h2><span class="sec-num">8</span> Limitation of Liability</h2>
+                <p>To the extent permitted by applicable law, Anomus and its operator will not be liable for indirect or consequential losses arising from the use of the website.</p>
+                <p>This section does not exclude liability where applicable law does not permit such exclusion.</p>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section-item">
+                <h2><span class="sec-num">9</span> Third-Party Services</h2>
+                <p>Anomus may use third-party services or link to external websites. Those services may have their own terms and privacy policies. We are not responsible for external services beyond the responsibilities imposed by applicable law.</p>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section-item">
+                <h2><span class="sec-num">10</span> Changes to These Terms</h2>
+                <p>We may update these Terms of Service as the website develops. The latest version will be published on this page with its updated date. Continued use of the website after changes take effect may be subject to the updated terms, as permitted by law.</p>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section-item">
+                <h2><span class="sec-num">11</span> Governing Law</h2>
+                <p>These terms are subject to applicable laws. Any governing-law and dispute-resolution provisions will be determined according to the operator's circumstances and applicable legal requirements.</p>
+            </div>
+
+            <!-- Section 12 -->
+            <div class="section-item" id="credits">
+                <h2><span class="sec-num">12</span> Contact</h2>
+                <p>For questions about these terms, intellectual property concerns, or permission to use Anomus materials, contact:</p>
+                <div class="creator-box">
+                    <p><strong>Website:</strong> Anomus</p>
+                    <p><strong>Creator:</strong> Zaid</p>
+                    <p><strong>Contact:</strong> <a href="mailto:contact@anomus.io" style="color:var(--secondary-accent);">contact@anomus.io</a></p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p><strong>Anomus</strong> • Created by <strong>Zaid</strong></p>
+            <p>© 2026 Anomus. All rights reserved, subject to applicable law and third-party rights.</p>
+            <div class="links">
+                <a href="/">Play Game</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="mailto:contact@anomus.io">Contact</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
