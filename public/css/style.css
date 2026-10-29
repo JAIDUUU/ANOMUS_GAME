@@ -61,6 +61,10 @@
     --COLOR_PLAYER_TEXT_BASE: #f8fafc;
     --COLOR_PLAYER_ME: #38bdf8;
     --COLOR_PLAYER_ME_GUESSED: #4ade80;
+
+    --COLOR_GAMEBAR_TEXT: #38bdf8;
+    --COLOR_GAMEBAR_ROUND_TEXT: #c084fc;
+    --COLOR_GAMEBAR_WORD_DESCRIPTION: #c084fc;
 }
 
 body {
@@ -138,15 +142,78 @@ body {
     border-bottom: 2px solid #3b1f68 !important;
     color: #f8fafc !important;
 }
-#game-round .text, #game-word .description {
+
+#game-round .text {
     color: #c084fc !important;
-    font-weight: bold !important;
+    font-weight: 800 !important;
 }
+
+#game-word {
+    color: #38bdf8 !important;
+    font-family: Inconsolata, monospace !important;
+}
+
+#game-word .description {
+    color: #c084fc !important;
+    font-weight: 800 !important;
+    font-size: 0.95em !important;
+    letter-spacing: 1.5px !important;
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.4) !important;
+}
+
+/* Drawer word view */
 #game-word .word {
     color: #38bdf8 !important;
     font-weight: 900 !important;
-    letter-spacing: 2px !important;
+    letter-spacing: 3px !important;
+    font-size: 1.9em !important;
+    text-shadow: 0 0 14px rgba(56, 189, 248, 0.5) !important;
 }
+
+/* Guesser hints & dashes (GUESS THIS) */
+#game-word .hints {
+    color: #38bdf8 !important;
+    font-weight: 900 !important;
+    letter-spacing: 2px !important;
+    font-size: 1.9em !important;
+}
+
+#game-word .hints .container {
+    gap: 0.15em !important;
+}
+
+#game-word .hints .container .hint {
+    color: #38bdf8 !important;
+    font-weight: 900 !important;
+    font-size: 1em !important;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.6) !important;
+    transition: color 0.15s ease !important;
+}
+
+@keyframes hint_uncover_anomus {
+    0% { color: #facc15; transform: translateY(0); }
+    15% { color: #facc15; transform: scale(1.35) translateY(-5px); }
+    30% { color: #facc15; transform: translateY(2px); }
+    100% { color: #ffffff; transform: translateY(0); }
+}
+
+#game-word .hints .container .hint.uncover {
+    animation: hint_uncover_anomus 0.8s ease-in-out 1 !important;
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.9) !important;
+}
+
+#game-word .hints .container .word-length {
+    color: #c084fc !important;
+    font-weight: 800 !important;
+    font-size: 0.65em !important;
+    background: rgba(139, 92, 246, 0.2) !important;
+    border: 1px solid rgba(139, 92, 246, 0.45) !important;
+    border-radius: 4px !important;
+    padding: 1px 6px !important;
+    margin-left: 8px !important;
+}
+
 #game-clock {
     filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.4)) !important;
 }
