@@ -23,16 +23,16 @@
    ANOMUS SIGNATURE THEME: DEEP NEON VIOLET & POLISHED DARK
    ============================================================ */
 :root {
-    --ANOMUS_DEEP_BG: #1f143d;
-    --ANOMUS_CARD_BG: rgba(32, 20, 62, 0.95);
-    --ANOMUS_VIOLET_GLOW: #a855f7;
-    --ANOMUS_NEON_PURPLE: #c084fc;
-    --ANOMUS_CYAN_ACCENT: #38bdf8;
+    --ANOMUS_DEEP_BG: #0b0716;
+    --ANOMUS_CARD_BG: rgba(22, 14, 44, 0.94);
+    --ANOMUS_VIOLET_GLOW: #8b5cf6;
+    --ANOMUS_NEON_PURPLE: #a855f7;
+    --ANOMUS_CYAN_ACCENT: #06b6d4;
 
-    --COLOR_PANEL_BG: rgba(33, 20, 65, 0.94);
-    --COLOR_PANEL_LO: rgba(25, 15, 50, 0.96);
-    --COLOR_PANEL_HI: #3b1d75;
-    --COLOR_PANEL_BORDER: #5a2fa8;
+    --COLOR_PANEL_BG: #3e287a;
+    --COLOR_PANEL_LO: #322064;
+    --COLOR_PANEL_HI: #4c3294;
+    --COLOR_PANEL_BORDER: #7c3aed;
     --COLOR_PANEL_BORDER_FOCUS: #c084fc;
     --COLOR_PANEL_BUTTON: #7c3aed;
     --COLOR_PANEL_BUTTON_HOVER: #8b5cf6;
@@ -48,14 +48,14 @@
     --COLOR_CHAT_TEXT_LEAVE: #f87171;
     --COLOR_CHAT_TEXT_OWNER: #c084fc;
     --COLOR_CHAT_TEXT_GUESSCHAT: #4ade80;
-    --COLOR_CHAT_BG_BASE: #140a2c;
-    --COLOR_CHAT_BG_ALT: #1d0f3e;
-    --COLOR_CHAT_BG_GUESSED_BASE: rgba(16, 185, 129, 0.22);
-    --COLOR_CHAT_BG_GUESSED_ALT: rgba(16, 185, 129, 0.32);
+    --COLOR_CHAT_BG_BASE: #36226c;
+    --COLOR_CHAT_BG_ALT: #40287e;
+    --COLOR_CHAT_BG_GUESSED_BASE: rgba(16, 185, 129, 0.28);
+    --COLOR_CHAT_BG_GUESSED_ALT: rgba(16, 185, 129, 0.38);
     --COLOR_CHAT_INPUT_COUNT: #a78bfa;
 
-    --COLOR_PLAYER_BG_BASE: #180e38;
-    --COLOR_PLAYER_BG_ALT: #201248;
+    --COLOR_PLAYER_BG_BASE: #3e287a;
+    --COLOR_PLAYER_BG_ALT: #4a3090;
     --COLOR_PLAYER_BG_GUESSED_BASE: rgba(16, 185, 129, 0.28);
     --COLOR_PLAYER_BG_GUESSED_ALT: rgba(16, 185, 129, 0.38);
     --COLOR_PLAYER_TEXT_BASE: #f8fafc;
@@ -68,12 +68,12 @@
 }
 
 body {
-    background-color: #211442 !important;
+    background-color: #0b0716 !important;
     background-image: 
-        radial-gradient(circle at 12% 18%, rgba(168, 85, 247, 0.38) 0%, transparent 45%),
-        radial-gradient(circle at 88% 82%, rgba(6, 182, 212, 0.26) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.18) 0%, transparent 60%),
-        linear-gradient(145deg, #2d1856 0%, #211442 50%, #170d30 100%) !important;
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.10) 0%, transparent 60%),
+        url('/img/background_dark.png') !important;
     background-attachment: fixed !important;
     color: #f1f5f9 !important;
 }
@@ -125,8 +125,8 @@ body {
 
 /* Inputs and Selects styling */
 #home input, #home select, .room select, .room textarea {
-    background: #180e38 !important;
-    border: 1.5px solid #5a2fa8 !important;
+    background: #24144c !important;
+    border: 1.5px solid #6d3ec2 !important;
     color: #f8fafc !important;
     border-radius: 6px !important;
 }
@@ -136,10 +136,11 @@ body {
     outline: none !important;
 }
 
-/* In-game layout adjustments */
+/* In-game layout adjustments: TOP panel (#game-bar) - softened & visibly lighter */
 #game-bar {
-    background: #180e38 !important;
-    border-bottom: 2px solid #4a247f !important;
+    background: #3e287a !important;
+    border-bottom: 2px solid #8b5cf6 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
     color: #f8fafc !important;
 }
 
@@ -218,14 +219,16 @@ body {
     filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.4)) !important;
 }
 
+/* RIGHT panel (#game-chat) - softened & visibly lighter */
 #game-chat {
-    background: #180e38 !important;
-    border-left: 2px solid #4a247f !important;
+    background: #3e287a !important;
+    border-left: 2px solid #8b5cf6 !important;
+    box-shadow: -3px 0 12px rgba(0, 0, 0, 0.25) !important;
     border-radius: 4px !important;
 }
 
 #game-chat .chat-content {
-    background: #130a2a !important;
+    background: #2e1c5c !important;
     color: #f8fafc !important;
 }
 
@@ -240,27 +243,27 @@ body {
 }
 
 #game-chat .chat-content p:nth-child(even) {
-    background-color: #1d0f3e !important;
+    background-color: #392472 !important;
 }
 
 #game-chat .chat-content p.guessed {
-    background-color: rgba(16, 185, 129, 0.22) !important;
+    background-color: rgba(16, 185, 129, 0.28) !important;
     color: #4ade80 !important;
 }
 
 #game-chat .chat-content p.guessed:nth-child(even) {
-    background-color: rgba(16, 185, 129, 0.32) !important;
+    background-color: rgba(16, 185, 129, 0.38) !important;
 }
 
 #game-chat form.chat-form {
-    background: #180e38 !important;
-    border-top: 1px solid #4a247f !important;
+    background: #3e287a !important;
+    border-top: 1px solid #8b5cf6 !important;
 }
 
 #game-chat form.chat-form input,
 #game-chat-input-mobile input {
-    background: #130a2a !important;
-    border: 1.5px solid #5a2fa8 !important;
+    background: #26164d !important;
+    border: 1.5px solid #a855f7 !important;
     color: #ffffff !important;
     border-radius: 4px !important;
 }
@@ -272,27 +275,28 @@ body {
     outline: none !important;
 }
 
-/* Players list high-contrast styling */
+/* LEFT panel (#game-players) - softened & visibly lighter */
 #game-players {
-    background: #180e38 !important;
-    border-right: 2px solid #4a247f !important;
+    background: #3e287a !important;
+    border-right: 2px solid #8b5cf6 !important;
+    box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25) !important;
     border-radius: 4px !important;
 }
 
 #game-players .player-background {
-    background: #180e38 !important;
+    background: #3e287a !important;
 }
 
 #game-players .player.odd .player-background {
-    background: #201248 !important;
+    background: #4a3090 !important;
 }
 
 #game-players .player.guessed .player-background {
-    background: rgba(16, 185, 129, 0.25) !important;
+    background: rgba(16, 185, 129, 0.28) !important;
 }
 
 #game-players .player.guessed.odd .player-background {
-    background: rgba(16, 185, 129, 0.35) !important;
+    background: rgba(16, 185, 129, 0.38) !important;
 }
 
 #game-players .player {
@@ -318,8 +322,9 @@ body {
 }
 
 #game-toolbar {
-    background: #1d0f3e !important;
-    border-top: 2px solid #4a247f !important;
+    background: #3e287a !important;
+    border-top: 2px solid #8b5cf6 !important;
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.25) !important;
 }
 
 #btn-add-bot {
